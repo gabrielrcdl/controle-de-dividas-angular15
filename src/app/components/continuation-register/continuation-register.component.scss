@@ -1,0 +1,33 @@
+.warn {
+  color: red;
+  margin: 10px;
+}
+
+.center {
+  margin: 10px;
+}
+
+.image-block {
+  display: flex;
+  justify-content: center;
+
+  .circle {
+    width: 128px;
+    height: 128px;
+    border-radius: 128px;
+    object-fit: cover;
+  }
+}
+
+form,
+h1 {
+  margin: 15px;
+}
+
+.show-pass {
+  cursor: pointer;
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
+  color: var(--accent-main);
+}

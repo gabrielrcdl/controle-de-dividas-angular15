@@ -1,0 +1,107 @@
+<h1>Continue seu cadastro!</h1>
+
+<form [formGroup]="form">
+  <div class="input-group mb-3">
+    <input
+      formControlName="name"
+      type="text"
+      class="form-control"
+      placeholder="Nome"
+      aria-label="name"
+      aria-describedby="name"
+    />
+  </div>
+
+  <div class="input-group mb-3">
+    <input
+      formControlName="email"
+      type="email"
+      class="form-control"
+      placeholder="Email"
+      aria-label="email"
+      aria-describedby="email"
+    />
+  </div>
+
+  <div class="input-group mb-3">
+    <input
+      formControlName="age"
+      type="number"
+      class="form-control"
+      placeholder="Idade"
+      aria-label="age"
+      aria-describedby="age"
+    />
+  </div>
+
+  <div class="image-block">
+    <img [src]="isDefault ? isDefaultImg : preview" class="circle" />
+  </div>
+
+  <label for="basic-url">Adicione uma foto ao perfil</label>
+  <div class="input-group mb-3">
+    <input
+      type="file"
+      class="form-control"
+      aria-label="imgProfile"
+      aria-describedby="imgProfile"
+      (change)="onChange($event)"
+    />
+  </div>
+
+  <div class="input-group mb-3">
+    <input
+      [type]="hideFieldOne ? 'password' : 'text'"
+      formControlName="password"
+      autocomplete="off"
+      type="password"
+      class="form-control"
+      placeholder="Senha"
+      aria-label="Password"
+      aria-describedby="password"
+    />
+    <mat-icon
+      class="show-pass"
+      (click)="hideFieldOne = !hideFieldOne"
+      title="{{ hideFieldOne ? 'Mostrar senha' : 'Esconder senha' }}"
+    >
+      {{ hideFieldOne ? "visibility_off" : "visibility" }}
+    </mat-icon>
+  </div>
+
+  <div class="input-group mb-3">
+    <input
+      [type]="hideConfirmPassword ? 'password' : 'text'"
+      autocomplete="off"
+      formControlName="confirmPassword"
+      type="password"
+      class="form-control"
+      placeholder="Confirmar senha"
+      aria-label="confirmPassword"
+      aria-describedby="confirmPassword"
+    />
+    <mat-icon
+      class="show-pass"
+      (click)="hideConfirmPassword = !hideConfirmPassword"
+      title="{{ hideConfirmPassword ? 'Mostrar senha' : 'Esconder senha' }}"
+    >
+      {{ hideConfirmPassword ? "visibility_off" : "visibility" }}
+    </mat-icon>
+
+    <br />
+  </div>
+  <div>
+    <p
+      *ngIf="form.controls['confirmPassword'].hasError('equalsTo')"
+      class="warn"
+    >
+      As senhas não são iguais!!
+    </p>
+  </div>
+
+  <div class="d-grid gap-2 mt-4">
+    <button class="btn btn-primary btn-continuation-register" type="submit">
+      FINALIZAR CADASTRO
+    </button>
+  </div>
+</form>
