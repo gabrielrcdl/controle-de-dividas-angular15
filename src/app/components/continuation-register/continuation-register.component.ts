@@ -56,4 +56,8 @@ export class ContinuationRegisterComponent implements OnInit {
       });
     }
   }
+
+  submit() {
+    console.log(this.form);
+  }
 }
