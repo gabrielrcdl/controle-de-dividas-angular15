@@ -28,6 +28,7 @@
                   <div class="input-group mb-3">
                     <input
                       formControlName="password"
+                      [type]="hideField ? 'password' : 'text'"
                       autocomplete="off"
                       type="password"
                       class="form-control"
@@ -35,6 +36,13 @@
                       aria-label="password"
                       aria-describedby="password"
                     />
+                    <mat-icon
+                    class="show-pass"
+                    (click)="hideField = !hideField"
+                    title="{{ hideField ? 'Mostrar senha' : 'Esconder senha' }}"
+                  >
+                    {{ hideField ? "visibility_off" : "visibility" }}
+                  </mat-icon>
                   </div>
 
                   <div class="d-grid gap-2">

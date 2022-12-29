@@ -7,7 +7,7 @@ import { ApiService } from 'src/app/services/api.service';
 import { LocalStorageService } from 'src/app/services/local-storage-services/localstorage.service';
 
 import { UtilsService } from 'src/app/services/util-services/utils.service';
-import { FormValidations } from 'src/app/shared/material-module/validations/form-validations';
+import { FormValidations } from 'src/app/shared/validations/form-validations';
 
 @Component({
   selector: 'app-continuation-register',
@@ -118,6 +118,6 @@ export class ContinuationRegisterComponent implements OnInit, OnDestroy {
   refreshPage() {
     setTimeout(() => {
       location.reload();
-    }, 2000);
+    }, 3000);
   }
 }

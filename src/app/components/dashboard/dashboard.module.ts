@@ -12,6 +12,7 @@ import { DebtsComponent } from './debts/debts.component';
 import { FooterComponent } from './footer/footer.component';
 import { MessageHourComponent } from './message-hour/message-hour.component';
 import { ImgProfileComponent } from './img-profile/img-profile.component';
+import { MaterialModule } from 'src/app/shared/material-module/material.module';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { ImgProfileComponent } from './img-profile/img-profile.component';
   ],
   imports: [
     CommonModule,
-    DashboardRoutingModule
+    DashboardRoutingModule,
+    MaterialModule
   ]
 })
 export class DashboardModule { }

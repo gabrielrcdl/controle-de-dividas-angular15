@@ -53,4 +53,12 @@
       text-align: left;
     }
   }
+  .show-pass {
+    cursor: pointer;
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+    color: var(--accent-main);
+  }
+
 }

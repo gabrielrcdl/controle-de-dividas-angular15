@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   formRegister!: FormGroup;
   formLogin!: FormGroup;
   destroy$: Subject<boolean> = new Subject<boolean>()
+  public hideField = true;
 
   constructor(
     private fb: FormBuilder,

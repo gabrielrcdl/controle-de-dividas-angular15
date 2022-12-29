@@ -38,4 +38,11 @@ nav {
     color: #4b4b4b;
     cursor: pointer;
   }
+  .exit{
+    display: flex;
+    gap: 8px;
+    mat-icon{
+      color: white;
+    }
+  }
 }
