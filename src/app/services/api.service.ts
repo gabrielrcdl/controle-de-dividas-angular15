@@ -1,7 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, retry, throwError } from 'rxjs';
 import { environment } from 'src/environment/environment';
+import { IDownloadImg } from '../interfaces/downloadImg';
 import { ILoginUser } from '../interfaces/loginUser';
 import { IRegisterUser } from '../interfaces/registerUser';
 import { UtilsService } from './util-services/utils.service';
@@ -56,5 +57,26 @@ export class ApiService {
           return throwError(() => err);
         })
       )
+  }
+
+  downloadImg(imgName: string ): Observable<IDownloadImg>{
+    const headers = new HttpHeaders().set('imgName', imgName)
+
+    return this.http.get<IDownloadImg>(environment.BASE_URL + '/download/image', {headers: headers})
+    .pipe(
+      catchError((err) => {
+        if(err.status === 0 && err.status !== 404){
+          this.utilService.showError('Ocorreu um erro na aplicação, tente novamente!')
+        }
+          else if (err.status === 404) {
+          this.utilService.showError(err.error.message);
+        } else {
+          this.utilService.showError(
+            'Ocorreu um erro no servidor, tente mais tarde!'
+          );
+        }
+        return throwError(() => err);
+      })
+    )
   }
 }
