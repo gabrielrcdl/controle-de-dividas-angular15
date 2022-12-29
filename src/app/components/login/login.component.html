@@ -13,9 +13,10 @@
           <mat-card class="custom-style-card">
             <mat-tab-group>
               <mat-tab label="ENTRAR">
-                <form>
+                <form  [formGroup]="formLogin" (ngSubmit)="login()">
                   <div class="input-group mb-3">
                     <input
+                      formControlName="email"
                       type="email"
                       class="form-control"
                       placeholder="E-mail"
@@ -26,6 +27,7 @@
 
                   <div class="input-group mb-3">
                     <input
+                      formControlName="password"
                       autocomplete="off"
                       type="password"
                       class="form-control"
@@ -36,7 +38,11 @@
                   </div>
 
                   <div class="d-grid gap-2">
-                    <button class="btn btn-primary btn-login" type="submit">
+                    <button
+                    class="btn btn-primary btn-login"
+                    type="submit"
+                    [disabled]="formLogin.invalid"
+                    >
                       ENTRAR
                     </button>
                   </div>
