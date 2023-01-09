@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { LOCALE_ID, NgModule } from '@angular/core';
+import { CommonModule, registerLocaleData } from '@angular/common';
 
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
@@ -13,7 +13,31 @@ import { FooterComponent } from './footer/footer.component';
 import { MessageHourComponent } from './message-hour/message-hour.component';
 import { ImgProfileComponent } from './img-profile/img-profile.component';
 import { MaterialModule } from 'src/app/shared/material-module/material.module';
+import { CardViewComponent } from './card-view/card-view.component';
+import { AddRevenuesComponent } from './add-revenues/add-revenues.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MonthsRevenuesComponent } from './months-revenues/months-revenues.component';
+import { CurrencyMaskModule, CURRENCY_MASK_CONFIG } from 'ng2-currency-mask';
 
+
+
+import localePt from '@angular/common/locales/pt'
+import { ShortenerPipe } from 'src/app/shared/pipes/shortener.pipe';
+import { InputWidthDirective } from 'src/app/shared/input-width.directive';
+import { UpdateRevenuesComponent } from './update-revenues/update-revenues.component';
+registerLocaleData(localePt, 'pt')
+
+
+
+export const CustomCurrencyMaskConfig = {
+  align: 'left',
+  allowNegative: true,
+  decimal: ',',
+  precision: 2,
+  prefix: 'R$',
+  suffix: '',
+  thousands: '.',
+}
 
 @NgModule({
   declarations: [
@@ -26,12 +50,33 @@ import { MaterialModule } from 'src/app/shared/material-module/material.module';
     DebtsComponent,
     FooterComponent,
     MessageHourComponent,
-    ImgProfileComponent
+    ImgProfileComponent,
+    CardViewComponent,
+    AddRevenuesComponent,
+    MonthsRevenuesComponent,
+    ShortenerPipe,
+    InputWidthDirective,
+    UpdateRevenuesComponent
   ],
   imports: [
     CommonModule,
     DashboardRoutingModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule,
+    FormsModule,
+    CurrencyMaskModule,
+
+  ],
+  providers: [
+    {
+      provide: CURRENCY_MASK_CONFIG,
+      useValue: CustomCurrencyMaskConfig
+    },
+    {
+      provide: LOCALE_ID,
+      useValue: 'pt'
+
+    }
   ]
 })
 export class DashboardModule { }

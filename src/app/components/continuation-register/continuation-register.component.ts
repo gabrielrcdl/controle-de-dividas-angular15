@@ -2,7 +2,7 @@ import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { pipe, Subject, takeUntil } from 'rxjs';
-import { IRegisterUser } from 'src/app/interfaces/registerUser';
+import { IRegisterUser } from 'src/app/interfaces/register-user';
 import { ApiService } from 'src/app/services/api.service';
 import { LocalStorageService } from 'src/app/services/local-storage-services/localstorage.service';
 

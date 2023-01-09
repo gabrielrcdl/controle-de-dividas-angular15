@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
-import { ILoginUser } from 'src/app/interfaces/loginUser';
+import { ILoginUser } from 'src/app/interfaces/login-user';
 import { ApiService } from 'src/app/services/api.service';
 import { LocalStorageService } from 'src/app/services/local-storage-services/localstorage.service';
 import { UtilsService } from 'src/app/services/util-services/utils.service';
@@ -74,9 +74,7 @@ export class LoginComponent implements OnInit, OnDestroy {
           this.localStorageService.setLocalStorage('user', JSON.stringify(email))
           this.utilService.showSuccess('Login realizado com sucesso!')
           this.navigateUrl('dashboard')
-
-        })
-
+      })
     }
   }
 

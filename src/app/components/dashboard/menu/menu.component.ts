@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl, SafeUrl } from '@angular/platform-browser';
 import { Router } from '@angular/router';
-import { IDownloadImg } from 'src/app/interfaces/downloadImg';
+import { IDownloadImg } from 'src/app/interfaces/download-Img';
 import { ApiService } from 'src/app/services/api.service';
 import { LocalStorageService } from 'src/app/services/local-storage-services/localstorage.service';
 

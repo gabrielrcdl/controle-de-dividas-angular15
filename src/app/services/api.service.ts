@@ -1,10 +1,13 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable, retry, throwError } from 'rxjs';
+import { catchError, first, Observable, retry, throwError } from 'rxjs';
 import { environment } from 'src/environment/environment';
-import { IDownloadImg } from '../interfaces/downloadImg';
-import { ILoginUser } from '../interfaces/loginUser';
-import { IRegisterUser } from '../interfaces/registerUser';
+import { IDeleteRevenue } from '../interfaces/delete-revenue';
+import { IDownloadImg } from '../interfaces/download-Img';
+import { IListRevenues } from '../interfaces/list-revenue';
+import { ILoginUser } from '../interfaces/login-user';
+import { IRegisterRevenue } from '../interfaces/register-revenue';
+import { IRegisterUser } from '../interfaces/register-user';
 import { UtilsService } from './util-services/utils.service';
 
 @Injectable({
@@ -78,5 +81,56 @@ export class ApiService {
         return throwError(() => err);
       })
     )
+  }
+
+  registerRevenues(revenue: any): Observable<IRegisterRevenue>{
+      return this.http.post<IRegisterRevenue>(environment.BASE_URL + '/auth/revenues', revenue)
+      .pipe(
+        catchError((err) => {
+          return throwError(() => err)
+        })
+      )
+  }
+
+  getRegisterListRevenues(param: any, user: any): Observable<IListRevenues>{
+    let headers = new HttpHeaders()
+    headers = headers.set('month', param).set('user', user)
+
+    return this.http.get<IListRevenues>(environment.BASE_URL + '/list/revenues', {headers: headers})
+    .pipe(
+      first(),
+      catchError((err) => {
+        if(err.status === 0 && err.status !== 404){
+          this.utilService.showError('Ocorreu um erro na aplicação, tente novamente!')
+        }
+          else if (err.status === 404) {
+          this.utilService.showError(err.error.message);
+        } else {
+          this.utilService.showError(
+            'Ocorreu um erro no servidor, tente mais tarde!'
+          );
+        }
+        return throwError(() => err);
+      })
+    )
+  }
+
+  deleteRevenues(id: string): Observable<IDeleteRevenue>{
+      return this.http.delete<IDeleteRevenue>(environment.BASE_URL + '/delete/revenue/' + id)
+        .pipe(
+          catchError((err) => {
+            if(err.status === 0 && err.status !== 404){
+              this.utilService.showError('Ocorreu um erro na aplicação, tente novamente!')
+            }
+              else if (err.status === 404) {
+              this.utilService.showError(err.error.message);
+            } else {
+              this.utilService.showError(
+                'Ocorreu um erro no servidor, tente mais tarde!'
+              );
+            }
+            return throwError(() => err);
+          })
+        )
   }
 }

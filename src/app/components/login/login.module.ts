@@ -9,9 +9,7 @@ import { MaterialModule } from 'src/app/shared/material-module/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ContinuationRegisterComponent } from '../continuation-register/continuation-register.component';
-import { ApiService } from 'src/app/services/api.service';
-import { LocalStorageService } from 'src/app/services/local-storage-services/localstorage.service';
-import { UtilsService } from 'src/app/services/util-services/utils.service';
+
 
 
 @NgModule({
